@@ -1,0 +1,335 @@
+schema {
+  query: RootQuery
+  mutation: RootMutation
+}
+
+input addsongInput {
+  timeAdded: Date
+  originalURL: String
+  origin: songOriginEnum
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+  clientMutationId: String
+}
+
+type addsongPayload {
+  viewer: Viewer
+  changedsongEdge: changedsongEdge
+  clientMutationId: String
+}
+
+input adduserInput {
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+  clientMutationId: String
+}
+
+type adduserPayload {
+  viewer: Viewer
+  changeduserEdge: changeduserEdge
+  clientMutationId: String
+}
+
+# An edge in a connection.
+type changedsongEdge {
+  # The item at the end of the edge
+  node: changedsongNode
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+type changedsongNode {
+  _id: String
+  timeAdded: Date
+  originalURL: String
+  origin: songOriginEnum
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+
+  # The ID of an object
+  id: ID!
+}
+
+# An edge in a connection.
+type changeduserEdge {
+  # The item at the end of the edge
+  node: changeduserNode
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+type changeduserNode {
+  _id: String
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+
+  # The ID of an object
+  id: ID!
+}
+
+scalar Date
+
+input deletesongInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type deletesongPayload {
+  viewer: Viewer
+  ok: Boolean
+  id: ID!
+  clientMutationId: String
+}
+
+input deleteuserInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type deleteuserPayload {
+  viewer: Viewer
+  ok: Boolean
+  id: ID!
+  clientMutationId: String
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+enum orderBysong {
+  _ID_ASC
+  _ID_DESC
+  TIMEADDED_ASC
+  TIMEADDED_DESC
+  ORIGINALURL_ASC
+  ORIGINALURL_DESC
+  NAME_ASC
+  NAME_DESC
+  ARTIST_ASC
+  ARTIST_DESC
+  STREAMURL_ASC
+  STREAMURL_DESC
+  THUMBURL_ASC
+  THUMBURL_DESC
+  LYRIC_ASC
+  LYRIC_DESC
+  PLAY_ASC
+  PLAY_DESC
+}
+
+enum orderByuser {
+  _ID_ASC
+  _ID_DESC
+  USERNAME_ASC
+  USERNAME_DESC
+  ISHOST_ASC
+  ISHOST_DESC
+  ISONLINE_ASC
+  ISONLINE_DESC
+  LASTMODIFIED_ASC
+  LASTMODIFIED_DESC
+  BALANCE_ASC
+  BALANCE_DESC
+}
+
+# Information about pagination in a connection.
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+
+  # When paginating backwards, the cursor to continue.
+  startCursor: String
+
+  # When paginating forwards, the cursor to continue.
+  endCursor: String
+}
+
+type RootMutation {
+  addsong(input: addsongInput!): addsongPayload
+  updatesong(input: updatesongInput!): updatesongPayload
+  deletesong(input: deletesongInput!): deletesongPayload
+  adduser(input: adduserInput!): adduserPayload
+  updateuser(input: updateuserInput!): updateuserPayload
+  deleteuser(input: deleteuserInput!): deleteuserPayload
+}
+
+type RootQuery {
+  song(id: ID!): song
+  songs(
+    # The ID of a song
+    id: [ID]
+
+    # The ID of a song
+    ids: [ID]
+    orderBy: orderBysong
+    _id: String
+    timeAdded: Date
+    originalURL: String
+    name: String
+    artist: String
+    streamURL: String
+    thumbURL: String
+    lyric: String
+    play: Float
+  ): [song]
+  user(id: ID!): user
+  users(
+    # The ID of a user
+    id: [ID]
+
+    # The ID of a user
+    ids: [ID]
+    orderBy: orderByuser
+    _id: String
+    userName: String
+    isHost: Boolean
+    isOnline: Boolean
+    lastModified: Date
+    balance: Float
+  ): [user]
+  viewer: Viewer
+
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+}
+
+type song implements Node {
+  _id: String
+  timeAdded: Date
+  originalURL: String
+  origin: songOriginEnum
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+
+  # The ID of an object
+  id: ID!
+}
+
+# A connection to a list of items.
+type songConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [songEdge]
+  count: Float
+}
+
+# An edge in a connection.
+type songEdge {
+  # The item at the end of the edge
+  node: song
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+enum songOriginEnum {
+  Soundcloud
+  NCT
+  Zing
+  YouTube
+}
+
+input updatesongInput {
+  timeAdded: Date
+  originalURL: String
+  origin: songOriginEnum
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+  id: ID!
+  clientMutationId: String
+}
+
+type updatesongPayload {
+  changedsong: song
+  clientMutationId: String
+}
+
+input updateuserInput {
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+  id: ID!
+  clientMutationId: String
+}
+
+type updateuserPayload {
+  changeduser: user
+  clientMutationId: String
+}
+
+type user implements Node {
+  _id: String
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+
+  # The ID of an object
+  id: ID!
+}
+
+# A connection to a list of items.
+type userConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [userEdge]
+  count: Float
+}
+
+# An edge in a connection.
+type userEdge {
+  # The item at the end of the edge
+  node: user
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+type Viewer implements Node {
+  # The ID of an object
+  id: ID!
+  songs(after: String, first: Int, before: String, last: Int, orderBy: orderBysong, _id: String, timeAdded: Date, originalURL: String, name: String, artist: String, streamURL: String, thumbURL: String, lyric: String, play: Float): songConnection
+  song(id: ID!): song
+  users(after: String, first: Int, before: String, last: Int, orderBy: orderByuser, _id: String, userName: String, isHost: Boolean, isOnline: Boolean, lastModified: Date, balance: Float): userConnection
+  user(id: ID!): user
+}
