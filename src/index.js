@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import ListPage from './views/ListPage';
 import { Router, Route, browserHistory, applyRouterMiddleware } from 'react-router';
 import useRelay from 'react-router-relay';
-import './index.css';
 
 Relay.injectNetworkLayer(
 	new Relay.DefaultNetworkLayer('http://localhost:3000/graphql')
@@ -20,6 +19,6 @@ ReactDOM.render(
 		history={browserHistory}
 	>
 		<Route path="/" component={ListPage} queries={ViewerQueries} />
-	</Router>
-	, document.getElementById('root')
+	</Router>,
+	document.getElementById('root')
 );

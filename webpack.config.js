@@ -1,11 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+module.exports.webpackConfig = {
 	entry: './src/index.js',
 	output: {
 		filename: '[name].[hash].js',
 		path: __dirname + '/build',
-		publicPath: '/'
+		publicPath: '/',
 	},
 	module: {
 		preLoaders: [{
@@ -27,7 +27,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: 'index.html'
+			template:  __dirname + '/index.html'
 		})
 	]
 };
