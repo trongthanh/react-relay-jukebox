@@ -19,6 +19,7 @@
     "graphql-config-parser": "^1.0.1",
     "history": "3.0.0",
     "html-webpack-plugin": "^2.24.0",
+    "moment": "^2.15.2",
     "mongoose": "^4.6.5",
     "react": "15.2.1",
     "react-dom": "15.2.1",
