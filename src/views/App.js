@@ -8,35 +8,12 @@ export default class App extends Component {
 		return (
 			<main>
 				<Header />
-
 				<div className="scroll-content">
 					<Nav />
-
 					<section id="js-playblock" className="main-content">
 						<div className="container">
 							{this.props.children}
 							{'{> player}'}
-						</div>
-					</section>
-
-					<section id="js-naustorm" className="main-content"  style={{display: 'none'}}>
-						<div className="container">
-							{'{> naustorm}'}
-						</div>
-					</section>
-
-					<section id="js-gamblr" className="main-content"  style={{display: 'none'}}>
-						<div className="container">
-							<div className="naustorm-section">
-								<h5>>gamblr</h5>
-								<p>You want to change, make changes. Help us to make it real, plz !!!</p>
-							</div>
-						</div>
-					</section>
-
-					<section id="js-naucoin" className="main-content" style={{display: 'none'}}>
-						<div className="container">
-							{'{> naucoin}'}
 						</div>
 					</section>
 				</div>
