@@ -1,6 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
-import SongComp from './SongComp';
+import SongComp from '../components/SongComp';
 
 class ListPage extends React.Component {
 	static propTypes = {
@@ -10,9 +10,9 @@ class ListPage extends React.Component {
 		let viewer = this.props.viewer;
 
 		return (
-			<div>
+			<div className="playlist">
 				<ul className="playlist--list">
-					{viewer.songs.edges.reverse().map(edge => edge.node).map(song =>
+					{viewer.songs.edges.concat().reverse().map(edge => edge.node).map(song =>
 						<SongComp key={song._id} song={song} />
 					)}
 				</ul>

@@ -33,6 +33,7 @@ graphQLServer.listen(GRAPHQL_PORT, () => console.log(
 const app = new WebpackDevServer(webpack(webpackConfig), {
 	contentBase: 'public/',
 	proxy: {'/graphql': `http://localhost:${GRAPHQL_PORT}`},
+	historyApiFallback: true,
 	publicPath: webpackConfig.output.publicPath,
 	hot: true,
 	stats: {colors: true},

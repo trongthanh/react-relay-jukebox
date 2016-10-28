@@ -1,8 +1,9 @@
 import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
+import App from './views/App';
 import ListPage from './views/ListPage';
-import { Router, Route, browserHistory, applyRouterMiddleware } from 'react-router';
+import { Router, Route, Redirect, browserHistory, applyRouterMiddleware } from 'react-router';
 import useRelay from 'react-router-relay';
 
 Relay.injectNetworkLayer(
@@ -18,7 +19,10 @@ ReactDOM.render(
 		render={applyRouterMiddleware(useRelay)}
 		history={browserHistory}
 	>
-		<Route path="/" component={ListPage} queries={ViewerQueries} />
+		<Redirect from="/" to="/today" />
+		<Route path="/" component={App}>
+			<Route path="/today" component={ListPage} queries={ViewerQueries} />
+		</Route>
 	</Router>,
 	document.getElementById('root')
 );
