@@ -1,30 +1,35 @@
-/**
- * IMPORTANT: remove react-relay plugin in babelrc before running this script,
- * or it will get into a dependency loop
- */
 require('babel-register');
 const fs = require('fs');
 const path = require('path');
 const { graphql } = require('graphql');
-const graphqlUtils = require('graphql/utilities');
-const { default: mongooseSchema } = require('../src/models/schema');
+const { introspectionQuery, printSchema } = require('graphql/utilities');
+const Schema = require('../src/models/schema').default;
 
-// Save JSON of full schema introspection for Babel Relay Plugin to use
-graphql(mongooseSchema, graphqlUtils.introspectionQuery).then((result) => {
-	if (result.errors) {
-		console.error(
-			'ERROR introspecting schema: ',
-			JSON.stringify(result.errors, null, 2)
-		);
-	} else {
+function buildSchema() {
+	return graphql(Schema, introspectionQuery).then(result => {
+		if (result.errors) {
+			console.error(
+				'ERROR introspecting schema: ',
+				JSON.stringify(result.errors, null, 2)
+			);
+		} else {
+			fs.writeFileSync(
+				path.join('./data/schema.json'),
+				JSON.stringify(result, null, 2)
+			);
+			console.log(`  write file ${path.join('./data/schema.json')}`);
+		}
+
+		// Save user readable type system shorthand of schema
 		fs.writeFileSync(
-			path.join(__dirname, '../data/schema.json'),
-			JSON.stringify(result, null, 2)
+			path.join('./data/schema.graphql'),
+			printSchema(Schema)
 		);
-	}
+		console.log(`  write file ${path.join('./data/schema.graphql')}`);
+	});
+}
+
+buildSchema().catch(e => {
+	console.log(e);
+	process.exit(0);
 });
-// Save user readable type system shorthand of schema
-fs.writeFileSync(
-	path.join(__dirname, '../data/schema.graphql'),
-	graphqlUtils.printSchema(mongooseSchema)
-);

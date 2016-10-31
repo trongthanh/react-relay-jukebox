@@ -1,154 +1,615 @@
-schema {
-  query: RootQuery
-  mutation: RootMutation
+input _idOperatorsFilterFindManysongInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
 }
 
-input addsongInput {
+input _idOperatorsFilterFindManyuserInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterFindOnesongInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterFindOneuserInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterRemoveManysongInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterRemoveManyuserInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterRemoveOnesongInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterRemoveOneuserInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterUpdateManysongInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterUpdateManyuserInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterUpdateOnesongInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterUpdateOneuserInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input ArtistOperatorsFilterFindManysongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+input ArtistOperatorsFilterFindOnesongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+input ArtistOperatorsFilterRemoveManysongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+input ArtistOperatorsFilterRemoveOnesongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+input ArtistOperatorsFilterUpdateManysongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+input ArtistOperatorsFilterUpdateOnesongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+# The `ConnectionCursor` is String type, that represents a point of record in data
+# set.  Due this point, you may request previous or next records.
+scalar ConnectionCursor
+
+input CreateOnesongInput {
   timeAdded: Date
   originalURL: String
-  origin: songOriginEnum
+  origin: EnumsongOrigin
   name: String
   artist: String
   streamURL: String
   thumbURL: String
   lyric: String
   play: Float
+}
+
+type CreateOnesongPayload {
+  # Created document ID
+  recordId: MongoID
+
+  # Created document
+  record: song
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
   clientMutationId: String
 }
 
-type addsongPayload {
-  viewer: Viewer
-  changedsongEdge: changedsongEdge
-  clientMutationId: String
-}
-
-input adduserInput {
+input CreateOneuserInput {
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
+}
+
+type CreateOneuserPayload {
+  # Created document ID
+  recordId: MongoID
+
+  # Created document
+  record: user
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
   clientMutationId: String
-}
-
-type adduserPayload {
-  viewer: Viewer
-  changeduserEdge: changeduserEdge
-  clientMutationId: String
-}
-
-# An edge in a connection.
-type changedsongEdge {
-  # The item at the end of the edge
-  node: changedsongNode
-
-  # A cursor for use in pagination
-  cursor: String!
-}
-
-type changedsongNode {
-  _id: String
-  timeAdded: Date
-  originalURL: String
-  origin: songOriginEnum
-  name: String
-  artist: String
-  streamURL: String
-  thumbURL: String
-  lyric: String
-  play: Float
-
-  # The ID of an object
-  id: ID!
-}
-
-# An edge in a connection.
-type changeduserEdge {
-  # The item at the end of the edge
-  node: changeduserNode
-
-  # A cursor for use in pagination
-  cursor: String!
-}
-
-type changeduserNode {
-  _id: String
-  userName: String
-  isHost: Boolean
-  isOnline: Boolean
-  lastModified: Date
-  balance: Float
-
-  # The ID of an object
-  id: ID!
 }
 
 scalar Date
 
-input deletesongInput {
-  id: ID!
-  clientMutationId: String
+enum EnumsongOrigin {
+  Soundcloud
+  NCT
+  Zing
+  YouTube
 }
 
-type deletesongPayload {
-  viewer: Viewer
-  ok: Boolean
-  id: ID!
-  clientMutationId: String
+input FilterFindManysongInput {
+  timeAdded: Date
+  originalURL: String
+  origin: EnumsongOrigin
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterFindManysongInput
 }
 
-input deleteuserInput {
-  id: ID!
-  clientMutationId: String
+input FilterFindManyuserInput {
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterFindManyuserInput
 }
 
-type deleteuserPayload {
-  viewer: Viewer
-  ok: Boolean
-  id: ID!
-  clientMutationId: String
+input FilterFindOnesongInput {
+  timeAdded: Date
+  originalURL: String
+  origin: EnumsongOrigin
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterFindOnesongInput
 }
 
-# An object with an ID
+input FilterFindOneuserInput {
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterFindOneuserInput
+}
+
+input FilterRemoveManysongInput {
+  timeAdded: Date
+  originalURL: String
+  origin: EnumsongOrigin
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterRemoveManysongInput
+}
+
+input FilterRemoveManyuserInput {
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterRemoveManyuserInput
+}
+
+input FilterRemoveOnesongInput {
+  timeAdded: Date
+  originalURL: String
+  origin: EnumsongOrigin
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterRemoveOnesongInput
+}
+
+input FilterRemoveOneuserInput {
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterRemoveOneuserInput
+}
+
+input FilterUpdateManysongInput {
+  timeAdded: Date
+  originalURL: String
+  origin: EnumsongOrigin
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterUpdateManysongInput
+}
+
+input FilterUpdateManyuserInput {
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterUpdateManyuserInput
+}
+
+input FilterUpdateOnesongInput {
+  timeAdded: Date
+  originalURL: String
+  origin: EnumsongOrigin
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterUpdateOnesongInput
+}
+
+input FilterUpdateOneuserInput {
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+  _id: MongoID
+
+  # List of fields that can be filtered via operators
+  _operators: OperatorsFilterUpdateOneuserInput
+}
+
+# The `ID` scalar type represents a unique MongoDB identifier in collection.
+# MongoDB by default use 12-byte ObjectId value
+# (https://docs.mongodb.com/manual/reference/bson-types/#objectid). But MongoDB
+# also may accepts string or integer as correct values for _id field.
+scalar MongoID
+
+type Mutation {
+  songCreate(input: RelayCreateOnesongInput!): CreateOnesongPayload
+  _songUpdate(input: RelayUpdateByIdsongInput!): UpdateByIdsongPayload
+  songUpdate(input: RelayUpdateOnesongInput!): UpdateOnesongPayload
+  songsUpdate(input: RelayUpdateManysongInput!): UpdateManysongPayload
+  _songRemove(input: RelayRemoveByIdsongInput!): RemoveByIdsongPayload
+  songRemove(input: RelayRemoveOnesongInput!): RemoveOnesongPayload
+  songsRemove(input: RelayRemoveManysongInput!): RemoveManysongPayload
+  userCreate(input: RelayCreateOneuserInput!): CreateOneuserPayload
+  _userUpdate(input: RelayUpdateByIduserInput!): UpdateByIduserPayload
+  userUpdate(input: RelayUpdateOneuserInput!): UpdateOneuserPayload
+  usersUpdate(input: RelayUpdateManyuserInput!): UpdateManyuserPayload
+  _userRemove(input: RelayRemoveByIduserInput!): RemoveByIduserPayload
+  userRemove(input: RelayRemoveOneuserInput!): RemoveOneuserPayload
+  usersRemove(input: RelayRemoveManyuserInput!): RemoveManyuserPayload
+}
+
+input NameOperatorsFilterFindManysongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+input NameOperatorsFilterFindOnesongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+input NameOperatorsFilterRemoveManysongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+input NameOperatorsFilterRemoveOnesongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+input NameOperatorsFilterUpdateManysongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+input NameOperatorsFilterUpdateOnesongInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+}
+
+# An object, that can be fetched by the globally unique ID among all types.
 interface Node {
-  # The id of the object.
+  # The globally unique ID among all types.
   id: ID!
 }
 
-enum orderBysong {
-  _ID_ASC
-  _ID_DESC
-  TIMEADDED_ASC
-  TIMEADDED_DESC
-  ORIGINALURL_ASC
-  ORIGINALURL_DESC
-  NAME_ASC
-  NAME_DESC
-  ARTIST_ASC
-  ARTIST_DESC
-  STREAMURL_ASC
-  STREAMURL_DESC
-  THUMBURL_ASC
-  THUMBURL_DESC
-  LYRIC_ASC
-  LYRIC_DESC
-  PLAY_ASC
-  PLAY_DESC
+input OperatorsFilterFindManysongInput {
+  # Filter value by operator(s)
+  timeAdded: TimeAddedOperatorsFilterFindManysongInput
+
+  # Filter value by operator(s)
+  name: NameOperatorsFilterFindManysongInput
+
+  # Filter value by operator(s)
+  artist: ArtistOperatorsFilterFindManysongInput
+
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterFindManysongInput
 }
 
-enum orderByuser {
-  _ID_ASC
-  _ID_DESC
-  USERNAME_ASC
-  USERNAME_DESC
-  ISHOST_ASC
-  ISHOST_DESC
-  ISONLINE_ASC
-  ISONLINE_DESC
-  LASTMODIFIED_ASC
-  LASTMODIFIED_DESC
-  BALANCE_ASC
-  BALANCE_DESC
+input OperatorsFilterFindManyuserInput {
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterFindManyuserInput
+}
+
+input OperatorsFilterFindOnesongInput {
+  # Filter value by operator(s)
+  timeAdded: TimeAddedOperatorsFilterFindOnesongInput
+
+  # Filter value by operator(s)
+  name: NameOperatorsFilterFindOnesongInput
+
+  # Filter value by operator(s)
+  artist: ArtistOperatorsFilterFindOnesongInput
+
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterFindOnesongInput
+}
+
+input OperatorsFilterFindOneuserInput {
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterFindOneuserInput
+}
+
+input OperatorsFilterRemoveManysongInput {
+  # Filter value by operator(s)
+  timeAdded: TimeAddedOperatorsFilterRemoveManysongInput
+
+  # Filter value by operator(s)
+  name: NameOperatorsFilterRemoveManysongInput
+
+  # Filter value by operator(s)
+  artist: ArtistOperatorsFilterRemoveManysongInput
+
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterRemoveManysongInput
+}
+
+input OperatorsFilterRemoveManyuserInput {
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterRemoveManyuserInput
+}
+
+input OperatorsFilterRemoveOnesongInput {
+  # Filter value by operator(s)
+  timeAdded: TimeAddedOperatorsFilterRemoveOnesongInput
+
+  # Filter value by operator(s)
+  name: NameOperatorsFilterRemoveOnesongInput
+
+  # Filter value by operator(s)
+  artist: ArtistOperatorsFilterRemoveOnesongInput
+
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterRemoveOnesongInput
+}
+
+input OperatorsFilterRemoveOneuserInput {
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterRemoveOneuserInput
+}
+
+input OperatorsFilterUpdateManysongInput {
+  # Filter value by operator(s)
+  timeAdded: TimeAddedOperatorsFilterUpdateManysongInput
+
+  # Filter value by operator(s)
+  name: NameOperatorsFilterUpdateManysongInput
+
+  # Filter value by operator(s)
+  artist: ArtistOperatorsFilterUpdateManysongInput
+
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterUpdateManysongInput
+}
+
+input OperatorsFilterUpdateManyuserInput {
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterUpdateManyuserInput
+}
+
+input OperatorsFilterUpdateOnesongInput {
+  # Filter value by operator(s)
+  timeAdded: TimeAddedOperatorsFilterUpdateOnesongInput
+
+  # Filter value by operator(s)
+  name: NameOperatorsFilterUpdateOnesongInput
+
+  # Filter value by operator(s)
+  artist: ArtistOperatorsFilterUpdateOnesongInput
+
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterUpdateOnesongInput
+}
+
+input OperatorsFilterUpdateOneuserInput {
+  # Filter value by operator(s)
+  _id: _idOperatorsFilterUpdateOneuserInput
 }
 
 # Information about pagination in a connection.
@@ -166,82 +627,267 @@ type PageInfo {
   endCursor: String
 }
 
-type RootMutation {
-  addsong(input: addsongInput!): addsongPayload
-  updatesong(input: updatesongInput!): updatesongPayload
-  deletesong(input: deletesongInput!): deletesongPayload
-  adduser(input: adduserInput!): adduserPayload
-  updateuser(input: updateuserInput!): updateuserPayload
-  deleteuser(input: deleteuserInput!): deleteuserPayload
-}
-
-type RootQuery {
-  song(id: ID!): song
-  songs(
-    # The ID of a song
-    id: [ID]
-
-    # The ID of a song
-    ids: [ID]
-    orderBy: orderBysong
-    _id: String
-    timeAdded: Date
-    originalURL: String
-    name: String
-    artist: String
-    streamURL: String
-    thumbURL: String
-    lyric: String
-    play: Float
-  ): [song]
-  user(id: ID!): user
-  users(
-    # The ID of a user
-    id: [ID]
-
-    # The ID of a user
-    ids: [ID]
-    orderBy: orderByuser
-    _id: String
-    userName: String
-    isHost: Boolean
-    isOnline: Boolean
-    lastModified: Date
-    balance: Float
-  ): [user]
-  viewer: Viewer
-
-  # Fetches an object given its ID
+type Query {
+  # Fetches an object that has globally unique ID among all types
   node(
-    # The ID of an object
+    # The globally unique ID among all types
     id: ID!
   ): Node
+
+  # Data under client context
+  viewer: Viewer
+}
+
+input RelayCreateOnesongInput {
+  record: CreateOnesongInput!
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayCreateOneuserInput {
+  record: CreateOneuserInput!
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayRemoveByIdsongInput {
+  _id: MongoID!
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayRemoveByIduserInput {
+  _id: MongoID!
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayRemoveManysongInput {
+  # Filter by fields
+  filter: FilterRemoveManysongInput!
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayRemoveManyuserInput {
+  # Filter by fields
+  filter: FilterRemoveManyuserInput!
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayRemoveOnesongInput {
+  # Filter by fields
+  filter: FilterRemoveOnesongInput
+  sort: SortRemoveOnesongInput
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayRemoveOneuserInput {
+  # Filter by fields
+  filter: FilterRemoveOneuserInput
+  sort: SortRemoveOneuserInput
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayUpdateByIdsongInput {
+  record: UpdateByIdsongInput!
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayUpdateByIduserInput {
+  record: UpdateByIduserInput!
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayUpdateManysongInput {
+  record: UpdateManysongInput!
+
+  # Filter by fields
+  filter: FilterUpdateManysongInput
+  sort: SortUpdateManysongInput
+  skip: Int
+  limit: Int = 1000
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayUpdateManyuserInput {
+  record: UpdateManyuserInput!
+
+  # Filter by fields
+  filter: FilterUpdateManyuserInput
+  sort: SortUpdateManyuserInput
+  skip: Int
+  limit: Int = 1000
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayUpdateOnesongInput {
+  record: UpdateOnesongInput!
+
+  # Filter by fields
+  filter: FilterUpdateOnesongInput
+  sort: SortUpdateOnesongInput
+  skip: Int
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input RelayUpdateOneuserInput {
+  record: UpdateOneuserInput!
+
+  # Filter by fields
+  filter: FilterUpdateOneuserInput
+  sort: SortUpdateOneuserInput
+  skip: Int
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+type RemoveByIdsongPayload {
+  # Removed document ID
+  recordId: MongoID
+
+  # Removed document
+  record: song
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+type RemoveByIduserPayload {
+  # Removed document ID
+  recordId: MongoID
+
+  # Removed document
+  record: user
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+type RemoveManysongPayload {
+  # Affected documents number
+  numAffected: Int
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+type RemoveManyuserPayload {
+  # Affected documents number
+  numAffected: Int
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+type RemoveOnesongPayload {
+  # Removed document ID
+  recordId: MongoID
+
+  # Removed document
+  record: song
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+type RemoveOneuserPayload {
+  # Removed document ID
+  recordId: MongoID
+
+  # Removed document
+  record: user
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
 }
 
 type song implements Node {
-  _id: String
   timeAdded: Date
   originalURL: String
-  origin: songOriginEnum
+  origin: EnumsongOrigin
   name: String
   artist: String
   streamURL: String
   thumbURL: String
   lyric: String
   play: Float
+  _id: MongoID
 
-  # The ID of an object
+  # The globally unique ID among all types
   id: ID!
 }
 
 # A connection to a list of items.
 type songConnection {
+  # Total object count.
+  count: Int
+
   # Information to aid in pagination.
   pageInfo: PageInfo!
 
-  # A list of edges.
+  # Information to aid in pagination.
   edges: [songEdge]
-  count: Float
 }
 
 # An edge in a connection.
@@ -250,70 +896,327 @@ type songEdge {
   node: song
 
   # A cursor for use in pagination
-  cursor: String!
+  cursor: ConnectionCursor!
 }
 
-enum songOriginEnum {
-  Soundcloud
-  NCT
-  Zing
-  YouTube
+enum SortConnectionsongEnum {
+  _ID_DESC
+  _ID_ASC
 }
 
-input updatesongInput {
+enum SortConnectionuserEnum {
+  _ID_DESC
+  _ID_ASC
+}
+
+enum SortFindManysongInput {
+  _ID_ASC
+  _ID_DESC
+  TIMEADDED_ASC
+  TIMEADDED_DESC
+  NAME_ASC
+  NAME_DESC
+  ARTIST_ASC
+  ARTIST_DESC
+}
+
+enum SortFindManyuserInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+enum SortFindOnesongInput {
+  _ID_ASC
+  _ID_DESC
+  TIMEADDED_ASC
+  TIMEADDED_DESC
+  NAME_ASC
+  NAME_DESC
+  ARTIST_ASC
+  ARTIST_DESC
+}
+
+enum SortFindOneuserInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+enum SortRemoveOnesongInput {
+  _ID_ASC
+  _ID_DESC
+  TIMEADDED_ASC
+  TIMEADDED_DESC
+  NAME_ASC
+  NAME_DESC
+  ARTIST_ASC
+  ARTIST_DESC
+}
+
+enum SortRemoveOneuserInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+enum SortUpdateManysongInput {
+  _ID_ASC
+  _ID_DESC
+  TIMEADDED_ASC
+  TIMEADDED_DESC
+  NAME_ASC
+  NAME_DESC
+  ARTIST_ASC
+  ARTIST_DESC
+}
+
+enum SortUpdateManyuserInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+enum SortUpdateOnesongInput {
+  _ID_ASC
+  _ID_DESC
+  TIMEADDED_ASC
+  TIMEADDED_DESC
+  NAME_ASC
+  NAME_DESC
+  ARTIST_ASC
+  ARTIST_DESC
+}
+
+enum SortUpdateOneuserInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+input TimeAddedOperatorsFilterFindManysongInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+}
+
+input TimeAddedOperatorsFilterFindOnesongInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+}
+
+input TimeAddedOperatorsFilterRemoveManysongInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+}
+
+input TimeAddedOperatorsFilterRemoveOnesongInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+}
+
+input TimeAddedOperatorsFilterUpdateManysongInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+}
+
+input TimeAddedOperatorsFilterUpdateOnesongInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+}
+
+input UpdateByIdsongInput {
   timeAdded: Date
   originalURL: String
-  origin: songOriginEnum
+  origin: EnumsongOrigin
   name: String
   artist: String
   streamURL: String
   thumbURL: String
   lyric: String
   play: Float
-  id: ID!
+  _id: MongoID!
+}
+
+type UpdateByIdsongPayload {
+  # Updated document ID
+  recordId: MongoID
+
+  # Updated document
+  record: song
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
   clientMutationId: String
 }
 
-type updatesongPayload {
-  changedsong: song
-  clientMutationId: String
-}
-
-input updateuserInput {
+input UpdateByIduserInput {
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
-  id: ID!
+  _id: MongoID!
+}
+
+type UpdateByIduserPayload {
+  # Updated document ID
+  recordId: MongoID
+
+  # Updated document
+  record: user
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
   clientMutationId: String
 }
 
-type updateuserPayload {
-  changeduser: user
+input UpdateManysongInput {
+  timeAdded: Date
+  originalURL: String
+  origin: EnumsongOrigin
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+}
+
+type UpdateManysongPayload {
+  # Affected documents number
+  numAffected: Int
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input UpdateManyuserInput {
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+}
+
+type UpdateManyuserPayload {
+  # Affected documents number
+  numAffected: Int
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input UpdateOnesongInput {
+  timeAdded: Date
+  originalURL: String
+  origin: EnumsongOrigin
+  name: String
+  artist: String
+  streamURL: String
+  thumbURL: String
+  lyric: String
+  play: Float
+}
+
+type UpdateOnesongPayload {
+  # Updated document ID
+  recordId: MongoID
+
+  # Updated document
+  record: song
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
+  clientMutationId: String
+}
+
+input UpdateOneuserInput {
+  userName: String
+  isHost: Boolean
+  isOnline: Boolean
+  lastModified: Date
+  balance: Float
+}
+
+type UpdateOneuserPayload {
+  # Updated document ID
+  recordId: MongoID
+
+  # Updated document
+  record: user
+
+  # The globally unique ID among all types
+  nodeId: ID
+
+  # The client mutation ID used by clients like Relay to track the mutation. If
+  # given, returned in the response payload of the mutation.
   clientMutationId: String
 }
 
 type user implements Node {
-  _id: String
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
+  _id: MongoID
 
-  # The ID of an object
+  # The globally unique ID among all types
   id: ID!
 }
 
 # A connection to a list of items.
 type userConnection {
+  # Total object count.
+  count: Int
+
   # Information to aid in pagination.
   pageInfo: PageInfo!
 
-  # A list of edges.
+  # Information to aid in pagination.
   edges: [userEdge]
-  count: Float
 }
 
 # An edge in a connection.
@@ -322,14 +1225,74 @@ type userEdge {
   node: user
 
   # A cursor for use in pagination
-  cursor: String!
+  cursor: ConnectionCursor!
 }
 
-type Viewer implements Node {
-  # The ID of an object
-  id: ID!
-  songs(after: String, first: Int, before: String, last: Int, orderBy: orderBysong, _id: String, timeAdded: Date, originalURL: String, name: String, artist: String, streamURL: String, thumbURL: String, lyric: String, play: Float): songConnection
-  song(id: ID!): song
-  users(after: String, first: Int, before: String, last: Int, orderBy: orderByuser, _id: String, userName: String, isHost: Boolean, isOnline: Boolean, lastModified: Date, balance: Float): userConnection
-  user(id: ID!): user
+type Viewer {
+  songConnection(
+    # Forward pagination argument for returning at most first edges
+    first: Int
+
+    # Forward pagination argument for returning at most first edges
+    after: ConnectionCursor
+
+    # Backward pagination argument for returning at most last edges
+    last: Int
+
+    # Backward pagination argument for returning at most last edges
+    before: ConnectionCursor
+
+    # Filter by fields
+    filter: FilterFindManysongInput
+
+    # Sort argument for data ordering
+    sort: SortConnectionsongEnum = _ID_DESC
+  ): songConnection
+  songs(
+    # Filter by fields
+    filter: FilterFindManysongInput
+    skip: Int
+    limit: Int = 1000
+    sort: SortFindManysongInput
+  ): [song]
+  song(
+    # Filter by fields
+    filter: FilterFindOnesongInput
+    skip: Int
+    sort: SortFindOnesongInput
+  ): song
+  _song(_id: MongoID!): song
+  userConnection(
+    # Forward pagination argument for returning at most first edges
+    first: Int
+
+    # Forward pagination argument for returning at most first edges
+    after: ConnectionCursor
+
+    # Backward pagination argument for returning at most last edges
+    last: Int
+
+    # Backward pagination argument for returning at most last edges
+    before: ConnectionCursor
+
+    # Filter by fields
+    filter: FilterFindManyuserInput
+
+    # Sort argument for data ordering
+    sort: SortConnectionuserEnum = _ID_DESC
+  ): userConnection
+  users(
+    # Filter by fields
+    filter: FilterFindManyuserInput
+    skip: Int
+    limit: Int = 1000
+    sort: SortFindManyuserInput
+  ): [user]
+  user(
+    # Filter by fields
+    filter: FilterFindOneuserInput
+    skip: Int
+    sort: SortFindOneuserInput
+  ): user
+  _user(_id: MongoID!): user
 }

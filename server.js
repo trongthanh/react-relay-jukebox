@@ -1,8 +1,7 @@
 import express from 'express';
 import { json } from 'body-parser';
-import graffiti from '@risingstack/graffiti';
-// import path from 'path';
 import webpack from 'webpack';
+import graphqlHTTP from 'express-graphql';
 import WebpackDevServer from 'webpack-dev-server';
 import schema from './src/models/schema.js';
 import { webpackConfig } from './webpack.config';
@@ -20,10 +19,13 @@ const graphQLServer = express();
 // parse body as json
 graphQLServer.use(json());
 
-graphQLServer.use(graffiti.express({
+graphQLServer.use('/graphql', graphqlHTTP({
 	schema: schema,
-	context: {}, // custom context
-	graphiql: true
+	graphiql: true,
+	formatError: (error) => ({
+		message: error.message,
+		stack: error.stack.split('\n'),
+	}),
 }));
 
 graphQLServer.listen(GRAPHQL_PORT, () => console.log(
