@@ -42,6 +42,13 @@ export const SongSchema = new Schema ({
 		type: Number,
 		default: 0
 	},
+	isUp: {
+		type: Boolean,
+		default: false
+	},
+	author: {
+		type: String
+	}
 });
 
 export const SongModel = mongoose.model('song', SongSchema);

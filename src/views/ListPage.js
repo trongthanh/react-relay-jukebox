@@ -8,18 +8,33 @@ class ListPage extends React.Component {
 		viewer: React.PropTypes.object,
 	}
 
-	componentWillMount() {
+	state = {
+		firstRender: true,
+	}
 
+	componentDidMount() {
+
+		// delay render of the songs below the fold
+		setTimeout(() => {
+			this.setState({firstRender: false});
+		}, 500);
 	}
 
 	render () {
 		let viewer = this.props.viewer;
+		let songs;
+		if (this.state.firstRender) {
+			songs = viewer.songs.slice(0, 19);
+		} else {
+			songs = viewer.songs;
+		}
 
+		console.log('Number of items in list', viewer.songs.length);
 		return (
 			<div className="playlist">
 				<ul className="playlist--list">
-					{viewer.songs.map(song =>
-						<SongComp key={song._id} song={song} />
+					{songs.map((song, index) =>
+						<SongComp key={song._id} song={song} index={index} />
 					)}
 				</ul>
 			</div>

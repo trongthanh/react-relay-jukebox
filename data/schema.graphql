@@ -192,6 +192,8 @@ input CreateOnesongInput {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 }
 
 type CreateOnesongPayload {
@@ -252,6 +254,8 @@ input FilterFindManysongInput {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterFindManysongInput
@@ -280,6 +284,8 @@ input FilterFindOnesongInput {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterFindOnesongInput
@@ -308,6 +314,8 @@ input FilterRemoveManysongInput {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterRemoveManysongInput
@@ -336,6 +344,8 @@ input FilterRemoveOnesongInput {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterRemoveOnesongInput
@@ -364,6 +374,8 @@ input FilterUpdateManysongInput {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterUpdateManysongInput
@@ -392,6 +404,8 @@ input FilterUpdateOnesongInput {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterUpdateOnesongInput
@@ -873,6 +887,8 @@ type song implements Node {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 
   # The globally unique ID among all types
   id: ID!
@@ -1060,6 +1076,8 @@ input UpdateByIdsongInput {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 }
 
 type UpdateByIdsongPayload {
@@ -1111,6 +1129,8 @@ input UpdateManysongInput {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 }
 
 type UpdateManysongPayload {
@@ -1155,6 +1175,8 @@ input UpdateOnesongInput {
   thumbURL: String
   lyric: String
   play: Float
+  isUp: Boolean
+  author: String
 }
 
 type UpdateOnesongPayload {

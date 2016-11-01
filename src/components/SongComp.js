@@ -5,8 +5,10 @@ import Moment from 'moment';
 
 class SongComp extends React.Component {
 	static propTypes = {
-		song: React.PropTypes.object,
+		song: React.PropTypes.object.isRequired,
+		index: React.PropTypes.number.isRequired
 	}
+
 	render () {
 		const song = this.props.song;
 
@@ -37,13 +39,9 @@ class SongComp extends React.Component {
 		return (
 			<li className={liClass}>
 				<span className="playlist--item--active">&rtri;</span>
-				<span className="playlist--item--author">{/*song.author (host not implemented)*/}</span>
+				<span className="playlist--item--author">{song.isUp ? song.author : ''}</span>
 				<a href={song.originalURL} className={`playlist--item--origin playlist--item--${originBadgeName}`} target="_blank">
-					{song.thumbURL ?
-						<img src={song.thumbURL} />
-					:
-						<img src="http://stc.id.nixcdn.com/v11/images/df-singer-300x300.jpg" />
-					}
+					<img src={song.thumbURL ? song.thumbURL : 'http://stc.id.nixcdn.com/v11/images/df-singer-300x300.jpg'} />
 				</a>
 				<a href="#" className="playlist--item--link js-song-item"
 					title={title}>{title}</a>
@@ -71,7 +69,9 @@ export default Relay.createContainer(
 					artist,
 					timeAdded,
 					streamURL,
-					thumbURL
+					thumbURL,
+					isUp,
+					author,
 				}
 			`,
 		},
