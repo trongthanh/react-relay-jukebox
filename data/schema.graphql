@@ -1,121 +1,121 @@
 input _idOperatorsFilterFindManysongInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterFindManyuserInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterFindOnesongInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterFindOneuserInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterRemoveManysongInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterRemoveManyuserInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterRemoveOnesongInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterRemoveOneuserInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterUpdateManysongInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterUpdateManyuserInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterUpdateOnesongInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input _idOperatorsFilterUpdateOneuserInput {
-  gt: MongoID
-  gte: MongoID
-  lt: MongoID
-  lte: MongoID
-  ne: MongoID
-  in: [MongoID]
-  nin: [MongoID]
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
 }
 
 input ArtistOperatorsFilterFindManysongInput {
@@ -183,7 +183,7 @@ input ArtistOperatorsFilterUpdateOnesongInput {
 scalar ConnectionCursor
 
 input CreateOnesongInput {
-  timeAdded: Date
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -242,7 +242,8 @@ enum EnumsongOrigin {
 }
 
 input FilterFindManysongInput {
-  timeAdded: Date
+  _id: String
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -251,26 +252,26 @@ input FilterFindManysongInput {
   thumbURL: String
   lyric: String
   play: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterFindManysongInput
 }
 
 input FilterFindManyuserInput {
+  _id: String
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterFindManyuserInput
 }
 
 input FilterFindOnesongInput {
-  timeAdded: Date
+  _id: String
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -279,26 +280,26 @@ input FilterFindOnesongInput {
   thumbURL: String
   lyric: String
   play: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterFindOnesongInput
 }
 
 input FilterFindOneuserInput {
+  _id: String
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterFindOneuserInput
 }
 
 input FilterRemoveManysongInput {
-  timeAdded: Date
+  _id: String
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -307,26 +308,26 @@ input FilterRemoveManysongInput {
   thumbURL: String
   lyric: String
   play: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterRemoveManysongInput
 }
 
 input FilterRemoveManyuserInput {
+  _id: String
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterRemoveManyuserInput
 }
 
 input FilterRemoveOnesongInput {
-  timeAdded: Date
+  _id: String
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -335,26 +336,26 @@ input FilterRemoveOnesongInput {
   thumbURL: String
   lyric: String
   play: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterRemoveOnesongInput
 }
 
 input FilterRemoveOneuserInput {
+  _id: String
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterRemoveOneuserInput
 }
 
 input FilterUpdateManysongInput {
-  timeAdded: Date
+  _id: String
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -363,26 +364,26 @@ input FilterUpdateManysongInput {
   thumbURL: String
   lyric: String
   play: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterUpdateManysongInput
 }
 
 input FilterUpdateManyuserInput {
+  _id: String
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterUpdateManyuserInput
 }
 
 input FilterUpdateOnesongInput {
-  timeAdded: Date
+  _id: String
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -391,19 +392,18 @@ input FilterUpdateOnesongInput {
   thumbURL: String
   lyric: String
   play: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterUpdateOnesongInput
 }
 
 input FilterUpdateOneuserInput {
+  _id: String
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
-  _id: MongoID
 
   # List of fields that can be filtered via operators
   _operators: OperatorsFilterUpdateOneuserInput
@@ -500,6 +500,9 @@ interface Node {
 
 input OperatorsFilterFindManysongInput {
   # Filter value by operator(s)
+  _id: _idOperatorsFilterFindManysongInput
+
+  # Filter value by operator(s)
   timeAdded: TimeAddedOperatorsFilterFindManysongInput
 
   # Filter value by operator(s)
@@ -507,9 +510,6 @@ input OperatorsFilterFindManysongInput {
 
   # Filter value by operator(s)
   artist: ArtistOperatorsFilterFindManysongInput
-
-  # Filter value by operator(s)
-  _id: _idOperatorsFilterFindManysongInput
 }
 
 input OperatorsFilterFindManyuserInput {
@@ -519,6 +519,9 @@ input OperatorsFilterFindManyuserInput {
 
 input OperatorsFilterFindOnesongInput {
   # Filter value by operator(s)
+  _id: _idOperatorsFilterFindOnesongInput
+
+  # Filter value by operator(s)
   timeAdded: TimeAddedOperatorsFilterFindOnesongInput
 
   # Filter value by operator(s)
@@ -526,9 +529,6 @@ input OperatorsFilterFindOnesongInput {
 
   # Filter value by operator(s)
   artist: ArtistOperatorsFilterFindOnesongInput
-
-  # Filter value by operator(s)
-  _id: _idOperatorsFilterFindOnesongInput
 }
 
 input OperatorsFilterFindOneuserInput {
@@ -538,6 +538,9 @@ input OperatorsFilterFindOneuserInput {
 
 input OperatorsFilterRemoveManysongInput {
   # Filter value by operator(s)
+  _id: _idOperatorsFilterRemoveManysongInput
+
+  # Filter value by operator(s)
   timeAdded: TimeAddedOperatorsFilterRemoveManysongInput
 
   # Filter value by operator(s)
@@ -545,9 +548,6 @@ input OperatorsFilterRemoveManysongInput {
 
   # Filter value by operator(s)
   artist: ArtistOperatorsFilterRemoveManysongInput
-
-  # Filter value by operator(s)
-  _id: _idOperatorsFilterRemoveManysongInput
 }
 
 input OperatorsFilterRemoveManyuserInput {
@@ -557,6 +557,9 @@ input OperatorsFilterRemoveManyuserInput {
 
 input OperatorsFilterRemoveOnesongInput {
   # Filter value by operator(s)
+  _id: _idOperatorsFilterRemoveOnesongInput
+
+  # Filter value by operator(s)
   timeAdded: TimeAddedOperatorsFilterRemoveOnesongInput
 
   # Filter value by operator(s)
@@ -564,9 +567,6 @@ input OperatorsFilterRemoveOnesongInput {
 
   # Filter value by operator(s)
   artist: ArtistOperatorsFilterRemoveOnesongInput
-
-  # Filter value by operator(s)
-  _id: _idOperatorsFilterRemoveOnesongInput
 }
 
 input OperatorsFilterRemoveOneuserInput {
@@ -576,6 +576,9 @@ input OperatorsFilterRemoveOneuserInput {
 
 input OperatorsFilterUpdateManysongInput {
   # Filter value by operator(s)
+  _id: _idOperatorsFilterUpdateManysongInput
+
+  # Filter value by operator(s)
   timeAdded: TimeAddedOperatorsFilterUpdateManysongInput
 
   # Filter value by operator(s)
@@ -583,9 +586,6 @@ input OperatorsFilterUpdateManysongInput {
 
   # Filter value by operator(s)
   artist: ArtistOperatorsFilterUpdateManysongInput
-
-  # Filter value by operator(s)
-  _id: _idOperatorsFilterUpdateManysongInput
 }
 
 input OperatorsFilterUpdateManyuserInput {
@@ -595,6 +595,9 @@ input OperatorsFilterUpdateManyuserInput {
 
 input OperatorsFilterUpdateOnesongInput {
   # Filter value by operator(s)
+  _id: _idOperatorsFilterUpdateOnesongInput
+
+  # Filter value by operator(s)
   timeAdded: TimeAddedOperatorsFilterUpdateOnesongInput
 
   # Filter value by operator(s)
@@ -602,9 +605,6 @@ input OperatorsFilterUpdateOnesongInput {
 
   # Filter value by operator(s)
   artist: ArtistOperatorsFilterUpdateOnesongInput
-
-  # Filter value by operator(s)
-  _id: _idOperatorsFilterUpdateOnesongInput
 }
 
 input OperatorsFilterUpdateOneuserInput {
@@ -863,7 +863,8 @@ type RemoveOneuserPayload {
 }
 
 type song implements Node {
-  timeAdded: Date
+  _id: String
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -872,7 +873,6 @@ type song implements Node {
   thumbURL: String
   lyric: String
   play: Float
-  _id: MongoID
 
   # The globally unique ID among all types
   id: ID!
@@ -990,67 +990,68 @@ enum SortUpdateOneuserInput {
 }
 
 input TimeAddedOperatorsFilterFindManysongInput {
-  gt: Date
-  gte: Date
-  lt: Date
-  lte: Date
-  ne: Date
-  in: [Date]
-  nin: [Date]
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  ne: Float
+  in: [Float]
+  nin: [Float]
 }
 
 input TimeAddedOperatorsFilterFindOnesongInput {
-  gt: Date
-  gte: Date
-  lt: Date
-  lte: Date
-  ne: Date
-  in: [Date]
-  nin: [Date]
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  ne: Float
+  in: [Float]
+  nin: [Float]
 }
 
 input TimeAddedOperatorsFilterRemoveManysongInput {
-  gt: Date
-  gte: Date
-  lt: Date
-  lte: Date
-  ne: Date
-  in: [Date]
-  nin: [Date]
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  ne: Float
+  in: [Float]
+  nin: [Float]
 }
 
 input TimeAddedOperatorsFilterRemoveOnesongInput {
-  gt: Date
-  gte: Date
-  lt: Date
-  lte: Date
-  ne: Date
-  in: [Date]
-  nin: [Date]
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  ne: Float
+  in: [Float]
+  nin: [Float]
 }
 
 input TimeAddedOperatorsFilterUpdateManysongInput {
-  gt: Date
-  gte: Date
-  lt: Date
-  lte: Date
-  ne: Date
-  in: [Date]
-  nin: [Date]
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  ne: Float
+  in: [Float]
+  nin: [Float]
 }
 
 input TimeAddedOperatorsFilterUpdateOnesongInput {
-  gt: Date
-  gte: Date
-  lt: Date
-  lte: Date
-  ne: Date
-  in: [Date]
-  nin: [Date]
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  ne: Float
+  in: [Float]
+  nin: [Float]
 }
 
 input UpdateByIdsongInput {
-  timeAdded: Date
+  _id: String!
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -1059,7 +1060,6 @@ input UpdateByIdsongInput {
   thumbURL: String
   lyric: String
   play: Float
-  _id: MongoID!
 }
 
 type UpdateByIdsongPayload {
@@ -1078,12 +1078,12 @@ type UpdateByIdsongPayload {
 }
 
 input UpdateByIduserInput {
+  _id: String!
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
-  _id: MongoID!
 }
 
 type UpdateByIduserPayload {
@@ -1102,7 +1102,7 @@ type UpdateByIduserPayload {
 }
 
 input UpdateManysongInput {
-  timeAdded: Date
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -1146,7 +1146,7 @@ type UpdateManyuserPayload {
 }
 
 input UpdateOnesongInput {
-  timeAdded: Date
+  timeAdded: Float
   originalURL: String
   origin: EnumsongOrigin
   name: String
@@ -1196,12 +1196,12 @@ type UpdateOneuserPayload {
 }
 
 type user implements Node {
+  _id: String
   userName: String
   isHost: Boolean
   isOnline: Boolean
   lastModified: Date
   balance: Float
-  _id: MongoID
 
   # The globally unique ID among all types
   id: ID!

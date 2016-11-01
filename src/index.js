@@ -23,9 +23,9 @@ ReactDOM.render(
 	>
 		<Redirect from="/" to="/today" />
 		<Route path="/" component={App}>
-			<Route path="/today" component={ListPage} queries={ViewerQueries} />
-			<Route path="/yesterday" component={ListPage} queries={ViewerQueries} />
-			<Route path="/last-week" component={ListPage} queries={ViewerQueries} />
+			<Route path="/today" component={ListPage.Today} queries={ViewerQueries} />
+			<Route path="/yesterday" component={ListPage.Yesterday} queries={ViewerQueries} />
+			<Route path="/last-week" component={ListPage.LastWeek} queries={ViewerQueries} />
 			<Route path="/nau-storm" component={NauStorm} />
 			<Route path="/nau-coin" component={NauCoin} />
 		</Route>

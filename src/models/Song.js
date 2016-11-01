@@ -3,8 +3,9 @@ import composeWithMongoose from 'graphql-compose-mongoose';
 import composeWithRelay from 'graphql-compose-relay';
 
 export const SongSchema = new Schema ({
+	_id: String,
 	timeAdded: {
-		type: Date,
+		type: Number, // timestamp float value
 		index: true,
 	},
 	originalURL: {

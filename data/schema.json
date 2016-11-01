@@ -553,11 +553,21 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "timeAdded",
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -643,16 +653,6 @@
               "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "_operators",
               "description": "List of fields that can be filtered via operators",
               "type": {
@@ -669,8 +669,8 @@
         },
         {
           "kind": "SCALAR",
-          "name": "Date",
-          "description": null,
+          "name": "String",
+          "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -679,8 +679,8 @@
         },
         {
           "kind": "SCALAR",
-          "name": "String",
-          "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+          "name": "Float",
+          "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). ",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -723,31 +723,21 @@
           "possibleTypes": null
         },
         {
-          "kind": "SCALAR",
-          "name": "Float",
-          "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). ",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "MongoID",
-          "description": "The `ID` scalar type represents a unique MongoDB identifier in collection. MongoDB by default use 12-byte ObjectId value (https://docs.mongodb.com/manual/reference/bson-types/#objectid). But MongoDB also may accepts string or integer as correct values for _id field.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
           "kind": "INPUT_OBJECT",
           "name": "OperatorsFilterFindManysongInput",
           "description": null,
           "fields": null,
           "inputFields": [
+            {
+              "name": "_id",
+              "description": "Filter value by operator(s)",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "_idOperatorsFilterFindManysongInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
             {
               "name": "timeAdded",
               "description": "Filter value by operator(s)",
@@ -777,14 +767,93 @@
                 "ofType": null
               },
               "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "_idOperatorsFilterFindManysongInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "gt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": "Filter value by operator(s)",
+              "name": "gte",
+              "description": null,
               "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "_idOperatorsFilterFindManysongInput",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lte",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "ne",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "in",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "nin",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "defaultValue": null
             }
@@ -804,7 +873,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -814,7 +883,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -824,7 +893,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -834,7 +903,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -844,7 +913,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -857,7 +926,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -871,7 +940,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -1050,95 +1119,6 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            }
-          ],
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "INPUT_OBJECT",
-          "name": "_idOperatorsFilterFindManysongInput",
-          "description": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "name": "gt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "gte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "ne",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "in",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "nin",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
                   "ofType": null
                 }
               },
@@ -1353,12 +1333,24 @@
           "description": null,
           "fields": [
             {
+              "name": "_id",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "timeAdded",
               "description": null,
               "args": [],
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1455,18 +1447,6 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Float",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "_id",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1566,11 +1546,21 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "timeAdded",
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -1656,16 +1646,6 @@
               "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "_operators",
               "description": "List of fields that can be filtered via operators",
               "type": {
@@ -1686,6 +1666,16 @@
           "description": null,
           "fields": null,
           "inputFields": [
+            {
+              "name": "_id",
+              "description": "Filter value by operator(s)",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "_idOperatorsFilterFindOnesongInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
             {
               "name": "timeAdded",
               "description": "Filter value by operator(s)",
@@ -1715,14 +1705,93 @@
                 "ofType": null
               },
               "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "_idOperatorsFilterFindOnesongInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "gt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": "Filter value by operator(s)",
+              "name": "gte",
+              "description": null,
               "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "_idOperatorsFilterFindOnesongInput",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lte",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "ne",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "in",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "nin",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "defaultValue": null
             }
@@ -1742,7 +1811,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -1752,7 +1821,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -1762,7 +1831,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -1772,7 +1841,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -1782,7 +1851,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -1795,7 +1864,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -1809,7 +1878,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -1999,95 +2068,6 @@
           "possibleTypes": null
         },
         {
-          "kind": "INPUT_OBJECT",
-          "name": "_idOperatorsFilterFindOnesongInput",
-          "description": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "name": "gt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "gte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "ne",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "in",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "nin",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            }
-          ],
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
           "kind": "ENUM",
           "name": "SortFindOnesongInput",
           "description": null,
@@ -2147,11 +2127,31 @@
           "possibleTypes": null
         },
         {
+          "kind": "SCALAR",
+          "name": "MongoID",
+          "description": "The `ID` scalar type represents a unique MongoDB identifier in collection. MongoDB by default use 12-byte ObjectId value (https://docs.mongodb.com/manual/reference/bson-types/#objectid). But MongoDB also may accepts string or integer as correct values for _id field.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "INPUT_OBJECT",
           "name": "FilterFindManyuserInput",
           "description": null,
           "fields": null,
           "inputFields": [
+            {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
             {
               "name": "userName",
               "description": null,
@@ -2203,16 +2203,6 @@
               "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "_operators",
               "description": "List of fields that can be filtered via operators",
               "type": {
@@ -2223,6 +2213,16 @@
               "defaultValue": null
             }
           ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "Date",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
           "interfaces": null,
           "enumValues": null,
           "possibleTypes": null
@@ -2259,7 +2259,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2269,7 +2269,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2279,7 +2279,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2289,7 +2289,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2299,7 +2299,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2312,7 +2312,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -2326,7 +2326,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -2464,6 +2464,18 @@
           "description": null,
           "fields": [
             {
+              "name": "_id",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "userName",
               "description": null,
               "args": [],
@@ -2518,18 +2530,6 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Float",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "_id",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -2593,6 +2593,16 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "userName",
               "description": null,
               "type": {
@@ -2638,16 +2648,6 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Float",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
                 "ofType": null
               },
               "defaultValue": null
@@ -2699,7 +2699,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2709,7 +2709,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2719,7 +2719,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2729,7 +2729,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2739,7 +2739,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2752,7 +2752,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -2766,7 +2766,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -3235,7 +3235,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -3426,11 +3426,25 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
               "name": "timeAdded",
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -3512,20 +3526,6 @@
                 "kind": "SCALAR",
                 "name": "Float",
                 "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
-                  "ofType": null
-                }
               },
               "defaultValue": null
             }
@@ -3669,7 +3669,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -3766,11 +3766,21 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "timeAdded",
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -3856,16 +3866,6 @@
               "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "_operators",
               "description": "List of fields that can be filtered via operators",
               "type": {
@@ -3886,6 +3886,16 @@
           "description": null,
           "fields": null,
           "inputFields": [
+            {
+              "name": "_id",
+              "description": "Filter value by operator(s)",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "_idOperatorsFilterUpdateOnesongInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
             {
               "name": "timeAdded",
               "description": "Filter value by operator(s)",
@@ -3915,14 +3925,93 @@
                 "ofType": null
               },
               "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "_idOperatorsFilterUpdateOnesongInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "gt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": "Filter value by operator(s)",
+              "name": "gte",
+              "description": null,
               "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "_idOperatorsFilterUpdateOnesongInput",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lte",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "ne",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "in",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "nin",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "defaultValue": null
             }
@@ -3942,7 +4031,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -3952,7 +4041,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -3962,7 +4051,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -3972,7 +4061,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -3982,7 +4071,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -3995,7 +4084,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -4009,7 +4098,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -4188,95 +4277,6 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            }
-          ],
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "INPUT_OBJECT",
-          "name": "_idOperatorsFilterUpdateOnesongInput",
-          "description": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "name": "gt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "gte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "ne",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "in",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "nin",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
                   "ofType": null
                 }
               },
@@ -4491,7 +4491,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -4588,11 +4588,21 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "timeAdded",
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -4678,16 +4688,6 @@
               "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "_operators",
               "description": "List of fields that can be filtered via operators",
               "type": {
@@ -4708,6 +4708,16 @@
           "description": null,
           "fields": null,
           "inputFields": [
+            {
+              "name": "_id",
+              "description": "Filter value by operator(s)",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "_idOperatorsFilterUpdateManysongInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
             {
               "name": "timeAdded",
               "description": "Filter value by operator(s)",
@@ -4737,14 +4747,93 @@
                 "ofType": null
               },
               "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "_idOperatorsFilterUpdateManysongInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "gt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": "Filter value by operator(s)",
+              "name": "gte",
+              "description": null,
               "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "_idOperatorsFilterUpdateManysongInput",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lte",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "ne",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "in",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "nin",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "defaultValue": null
             }
@@ -4764,7 +4853,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -4774,7 +4863,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -4784,7 +4873,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -4794,7 +4883,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -4804,7 +4893,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -4817,7 +4906,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -4831,7 +4920,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -5010,95 +5099,6 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            }
-          ],
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "INPUT_OBJECT",
-          "name": "_idOperatorsFilterUpdateManysongInput",
-          "description": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "name": "gt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "gte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "ne",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "in",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "nin",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
                   "ofType": null
                 }
               },
@@ -5357,11 +5357,21 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "timeAdded",
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -5447,16 +5457,6 @@
               "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "_operators",
               "description": "List of fields that can be filtered via operators",
               "type": {
@@ -5477,6 +5477,16 @@
           "description": null,
           "fields": null,
           "inputFields": [
+            {
+              "name": "_id",
+              "description": "Filter value by operator(s)",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "_idOperatorsFilterRemoveOnesongInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
             {
               "name": "timeAdded",
               "description": "Filter value by operator(s)",
@@ -5506,14 +5516,93 @@
                 "ofType": null
               },
               "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "_idOperatorsFilterRemoveOnesongInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "gt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": "Filter value by operator(s)",
+              "name": "gte",
+              "description": null,
               "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "_idOperatorsFilterRemoveOnesongInput",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lte",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "ne",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "in",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "nin",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "defaultValue": null
             }
@@ -5533,7 +5622,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -5543,7 +5632,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -5553,7 +5642,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -5563,7 +5652,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -5573,7 +5662,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -5586,7 +5675,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -5600,7 +5689,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -5790,95 +5879,6 @@
           "possibleTypes": null
         },
         {
-          "kind": "INPUT_OBJECT",
-          "name": "_idOperatorsFilterRemoveOnesongInput",
-          "description": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "name": "gt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "gte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "ne",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "in",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "nin",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            }
-          ],
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
           "kind": "ENUM",
           "name": "SortRemoveOnesongInput",
           "description": null,
@@ -6038,11 +6038,21 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "timeAdded",
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -6128,16 +6138,6 @@
               "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "_operators",
               "description": "List of fields that can be filtered via operators",
               "type": {
@@ -6158,6 +6158,16 @@
           "description": null,
           "fields": null,
           "inputFields": [
+            {
+              "name": "_id",
+              "description": "Filter value by operator(s)",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "_idOperatorsFilterRemoveManysongInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
             {
               "name": "timeAdded",
               "description": "Filter value by operator(s)",
@@ -6187,14 +6197,93 @@
                 "ofType": null
               },
               "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "_idOperatorsFilterRemoveManysongInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "gt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
             },
             {
-              "name": "_id",
-              "description": "Filter value by operator(s)",
+              "name": "gte",
+              "description": null,
               "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "_idOperatorsFilterRemoveManysongInput",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lte",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "ne",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "in",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "nin",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "defaultValue": null
             }
@@ -6214,7 +6303,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -6224,7 +6313,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -6234,7 +6323,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -6244,7 +6333,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -6254,7 +6343,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Date",
+                "name": "Float",
                 "ofType": null
               },
               "defaultValue": null
@@ -6267,7 +6356,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -6281,7 +6370,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Date",
+                  "name": "Float",
                   "ofType": null
                 }
               },
@@ -6460,95 +6549,6 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            }
-          ],
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "INPUT_OBJECT",
-          "name": "_idOperatorsFilterRemoveManysongInput",
-          "description": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "name": "gt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "gte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "ne",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "in",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "nin",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
                   "ofType": null
                 }
               },
@@ -6803,6 +6803,20 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
               "name": "userName",
               "description": null,
               "type": {
@@ -6849,20 +6863,6 @@
                 "kind": "SCALAR",
                 "name": "Float",
                 "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "MongoID",
-                  "ofType": null
-                }
               },
               "defaultValue": null
             }
@@ -7063,6 +7063,16 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "userName",
               "description": null,
               "type": {
@@ -7108,16 +7118,6 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Float",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
                 "ofType": null
               },
               "defaultValue": null
@@ -7169,7 +7169,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7179,7 +7179,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7189,7 +7189,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7199,7 +7199,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7209,7 +7209,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7222,7 +7222,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -7236,7 +7236,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -7472,6 +7472,16 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "userName",
               "description": null,
               "type": {
@@ -7517,16 +7527,6 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Float",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
                 "ofType": null
               },
               "defaultValue": null
@@ -7578,7 +7578,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7588,7 +7588,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7598,7 +7598,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7608,7 +7608,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7618,7 +7618,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7631,7 +7631,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -7645,7 +7645,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -7868,6 +7868,16 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "userName",
               "description": null,
               "type": {
@@ -7913,16 +7923,6 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Float",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
                 "ofType": null
               },
               "defaultValue": null
@@ -7974,7 +7974,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7984,7 +7984,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -7994,7 +7994,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -8004,7 +8004,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -8014,7 +8014,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -8027,7 +8027,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -8041,7 +8041,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -8176,6 +8176,16 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "_id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "userName",
               "description": null,
               "type": {
@@ -8221,16 +8231,6 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Float",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "_id",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "MongoID",
                 "ofType": null
               },
               "defaultValue": null
@@ -8282,7 +8282,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -8292,7 +8292,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -8302,7 +8302,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -8312,7 +8312,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -8322,7 +8322,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "MongoID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -8335,7 +8335,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -8349,7 +8349,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "MongoID",
+                  "name": "String",
                   "ofType": null
                 }
               },

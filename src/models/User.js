@@ -3,6 +3,7 @@ import composeWithMongoose from 'graphql-compose-mongoose';
 import composeWithRelay from 'graphql-compose-relay';
 
 export const UserSchema = new Schema ({
+	_id: String,
 	userName : String,
 	isHost : Boolean,
 	isOnline : Boolean,

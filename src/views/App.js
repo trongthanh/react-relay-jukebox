@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
+import MediaPlayer from '../components/MediaPlayer';
 
 export default class App extends Component {
 
@@ -13,7 +14,7 @@ export default class App extends Component {
 					<section id="js-playblock" className="main-content">
 						<div className="container">
 							{this.props.children}
-							{'{> player}'}
+							<MediaPlayer />
 						</div>
 					</section>
 				</div>
